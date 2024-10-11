@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+
+const routes = [
+  {
+    name: 'Article',
+    url: '/article',
+  },
+  {
+    name: 'Portfolio',
+    url: '/portfolio',
+  },
+];
+
+console.log(routes);
+
+console.log(Astro.url.pathname);
+---
+
+<header>
+  <nav
+    class="sticky top-0 z-50 isolate grid h-[64px] place-items-center bg-gray-light text-gray-dark"
+  >
+    <div class="container flex items-center">
+      <a class="flex items-center gap-2" href="/">
+        <Image
+          src="/logo.svg"
+          alt=""
+          loading="eager"
+          width={100}
+          height={100}
+          class="w-10 h-10"
+        />
+        <span class="text-lg font-bold text-blue">Astro Neptune</span>
+      </a>
+
+      <div class="w-12"></div>
+      <div class="flex">
+        {
+          routes.map((route) => (
+            <a
+              href={route.url}
+              class:list={[
+                'm-1 py-4 px-3',
+                Astro.url.pathname === route.url
+                  ? 'font-bold'
+                  : 'font-semibold',
+              ]}
+            >
+              {route.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  console.log('ingfo');
+</script>
