@@ -3,18 +3,18 @@ import { Image } from 'astro:assets';
 
 const routes = [
   {
-    name: 'Article',
-    url: '/article',
+    name: 'Home',
+    url: '/',
   },
   {
     name: 'Portfolio',
     url: '/portfolio',
   },
+  {
+    name: 'Article',
+    url: '/article',
+  },
 ];
-
-console.log(routes);
-
-console.log(Astro.url.pathname);
 ---
 
 <header>
@@ -55,7 +55,3 @@ console.log(Astro.url.pathname);
     </div>
   </nav>
 </header>
-
-<script>
-  console.log('ingfo');
-</script>
