@@ -1,15 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
+
 import Layout from '@layouts/Layout.astro';
 import Masonry from '@components/Masonry.astro';
 import PostPreviewCard from '@components/PostPreviewCard.astro';
+
+const docs = await getCollection('portfolio');
 ---
 
 <Layout>
   <Masonry>
-    <PostPreviewCard
-      title="Dockerize Your Golang Application"
-      url="/portfolio/dockerize-golang"
-      description="lkaj;sdf;lkajsdf lkasjdfl;ajsf;lkajsdf asjdfkl;asjdflkasfgahsodfu asuidfh aioshdf"
-    />
+    {
+      docs.map((doc) => (
+        <PostPreviewCard
+          title={doc.data.title}
+          url={`/portfolio/${doc.slug}`}
+          description={doc.data.description}
+        />
+      ))
+    }
   </Masonry>
 </Layout>

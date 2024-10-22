@@ -1,0 +1,17 @@
+@layer base {
+  .markdown-container > h1 {
+    @apply mt-8 mb-4 text-2xl font-bold leading-8;
+  }
+
+  .markdown-container > h2 {
+    @apply mt-6 mb-4 text-xl font-bold leading-8;
+  }
+
+  .markdown-container > h3 {
+    @apply mt-6 mb-4 text-lg font-bold leading-8;
+  }
+
+  .markdown-container > p {
+    @apply my-4 text-justify text-lg leading-8;
+  }
+}

@@ -1,6 +1,7 @@
 ---
-import Layout from '@layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+
+import Layout from '@layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const portfolios = await getCollection('portfolio');
@@ -15,6 +16,8 @@ const { Content } = await portfolio.render();
 ---
 
 <Layout>
-  <h1>{portfolio?.data?.title}</h1>
-  <Content class="markdown" />
+  <h1 class="mb-8 text-3xl font-bold">{portfolio?.data?.title}</h1>
+  <div class="markdown-container">
+    <Content />
+  </div>
 </Layout>
