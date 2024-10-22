@@ -5,16 +5,19 @@ import BaseVideo from '@components/Video.astro';
 
 interface Props extends BaseVideoProps {}
 
-const { src, title, classes, ...props } = Astro.props;
+const { src, title, videoProps, ...props } = Astro.props;
 ---
 
 <BaseVideo
   src={src}
   title={title}
-  classes={classes}
-  loop
-  muted
-  autoplay
-  controls={false}
+  videoProps={{
+    loop: true,
+    autoplay: true,
+    muted: true,
+    controls: false,
+    ...videoProps,
+  }}
+  videoClasses="rounded-lg"
   {...props}
 />

@@ -1,22 +1,39 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-export interface Props extends HTMLAttributes<'video'> {
+export interface Props {
   src: string;
   title?: string;
-  classes?: string;
+  figureClasses?: string;
+  videoClasses?: string;
+  figcaptionClasses?: string;
+  figureProps?: HTMLAttributes<'figure'>;
+  videoProps?: HTMLAttributes<'video'>;
+  figcaptionProps?: HTMLAttributes<'figcaption'>;
 }
 
-const { src, title, classes, ...props } = Astro.props;
+const {
+  src,
+  title,
+  figureClasses,
+  videoClasses,
+  figcaptionClasses,
+  figureProps,
+  videoProps,
+  figcaptionProps,
+} = Astro.props;
 ---
 
-<figure class={classes}>
-  <video class="w-full" {...props}>
+<figure class={figureClasses} {...figureProps}>
+  <video class:list={['w-full', videoClasses]} {...videoProps}>
     <source src={src} />
   </video>
   {
     title && (
-      <figcaption class="text-center text-[0.8em] italic mt-2">
+      <figcaption
+        class:list={['text-center text-[0.8em] italic mt-2', figcaptionClasses]}
+        {...figcaptionProps}
+      >
         {title}
       </figcaption>
     )

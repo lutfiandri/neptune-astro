@@ -10,9 +10,6 @@ export default {
       center: true,
     },
     extend: {
-      screens: {
-        lgp: 'calc(1024px + 4rem)',
-      },
       minHeight: {
         'screen-no-header': 'calc(100vh - 64px)',
         'screen-no-footer': 'calc(100vh - 224px)',
