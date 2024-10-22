@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { Props as BaseVideoProps } from '@components/Video.astro';
+import BaseVideo from '@components/Video.astro';
+
+interface Props extends BaseVideoProps {}
+
+const { src, title, classes, ...props } = Astro.props;
+---
+
+<BaseVideo
+  src={src}
+  title={title}
+  classes={classes}
+  loop
+  muted
+  autoplay
+  controls={false}
+  {...props}
+/>

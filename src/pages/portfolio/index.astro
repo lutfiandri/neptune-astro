@@ -3,12 +3,14 @@ import { getCollection } from 'astro:content';
 
 import Layout from '@layouts/Layout.astro';
 import Masonry from '@components/Masonry.astro';
+import Video from '@components/Video.astro';
 import PostPreviewCard from '@components/PostPreviewCard.astro';
 
 const docs = await getCollection('portfolio');
 ---
 
 <Layout>
+  <!-- <Video src="" /> -->
   <Masonry>
     {
       docs.map((doc) => (

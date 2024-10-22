@@ -1,0 +1,24 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'video'> {
+  src: string;
+  title?: string;
+  classes?: string;
+}
+
+const { src, title, classes, ...props } = Astro.props;
+---
+
+<figure class={classes}>
+  <video class="w-full" {...props}>
+    <source src={src} />
+  </video>
+  {
+    title && (
+      <figcaption class="text-center text-[0.8em] italic mt-2">
+        {title}
+      </figcaption>
+    )
+  }
+</figure>
