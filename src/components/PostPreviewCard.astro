@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  description: string;
+  thumbnail?: string;
+  tags?: string[];
+}
+const { title, url, description, thumbnail, tags } = Astro.props;
+---
+
+<a href={url} class="group block w-full rounded-lg bg-white p-4 sm:p-8">
+  {
+    thumbnail && (
+      <div class="relative mb-4 aspect-[4/3] overflow-hidden rounded-md object-center">
+        {thumbnail.endsWith('.mp4') || thumbnail.endsWith('.webm') ? (
+          <video
+            loop
+            muted
+            auto-play
+            class="h-full object-cover object-center duration-500 group-hover:scale-105"
+          >
+            <source src={thumbnail} />
+          </video>
+        ) : (
+          <img
+            src={thumbnail}
+            alt={title}
+            class="h-full object-cover object-center duration-500 group-hover:scale-105"
+          />
+        )}
+      </div>
+    )
+  }
+  <div class="mb-2">
+    <h2
+      class="flex items-center gap-2 text-lg font-bold delay-[0ms] duration-[0ms] group-hover:text-blue"
+    >
+      <span>{title}</span>
+    </h2>
+    <div class="flex flex-wrap text-gray">
+      <style>
+        .tag:not(:last-child)::after {
+          content: '·';
+          font-size: 1em;
+          margin: 0 0.25em;
+        }
+      </style>
+      {tags?.map((tag, index) => <div class="tag">{tag}</div>)}
+    </div>
+  </div>
+  <div>{description}</div>
+</a>
